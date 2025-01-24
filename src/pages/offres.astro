@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import CardOffres from "../components/CardOffres.astro";
 
 const offres = [
   {
@@ -41,15 +42,20 @@ const offres = [
 <Base titre="Offres">
   <h1 class="text-teal-800 text-5xl font-black">Offres</h1>
   <!-- ou "Offres" pour la page des offres -->
-  <div>
-    <ul class="flex flex-col gap-6">
-      {
-        offres.map((offre) => (
-          <li class="bg-gray-800 text-white p-6 rounded-md">
-            {offre.nomMaison}
-          </li>
-        ))
-      }
-    </ul>
+  <div class="flex flex-col gap-6" x-data="{ showFavorites: false }">
+    <button
+      class="w-2/4 bg-teal-700 text-white shadow-md p-2 rounded-lg"
+      @click="showFavorites = !showFavorites"
+    >
+      <span x-show="!showFavorites">Afficher les favoris</span>
+      <span x-show="showFavorites">Afficher tout</span>
+    </button>
+
+    <div class="flex flex-col gap-6" x-show="!showFavorites">
+      {offres.map((offre) => <CardOffres {...offre} />)}
+    </div>
+    <div class="flex flex-col gap-6" x-show="showFavorites">
+      {offres.map((offre) => offre.favori && <CardOffres {...offre} />)}
+    </div>
   </div>
 </Base>
