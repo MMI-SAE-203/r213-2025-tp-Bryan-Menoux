@@ -51,7 +51,11 @@ const offres = [
       <span x-show="showFavorites">Afficher tout</span>
     </button>
 
-    <div class="flex flex-col gap-6" x-show="!showFavorites">
+    <div
+      class="flex flex-col gap-6"
+      x-show="!showFavorites"
+      x-transition.duration.200ms
+    >
       {offres.map((offre) => <CardOffres {...offre} />)}
     </div>
     <div class="flex flex-col gap-6" x-show="showFavorites">

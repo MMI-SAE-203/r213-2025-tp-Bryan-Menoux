@@ -1,9 +1,9 @@
 ---
-const { ...offre } = Astro.props;
+const offre = Astro.props;
 ---
 
 <li class="bg-white shadow-md p-4 rounded-lg flex flex-col gap-2">
-  <h2>{offre.nomMaison}</h2>
+  <h2 class="font-semibold text-lg">{offre.nomMaison}</h2>
   <p>Adresse : {offre.adresse}</p>
   <p>{offre.nbChambres} chambres, {offre.nbSdb} salles de bain</p>
   <p>Surface : {offre.surface} m²</p>
