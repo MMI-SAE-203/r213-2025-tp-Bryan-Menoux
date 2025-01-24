@@ -1,0 +1,32 @@
+---
+const { title, date, favori } = Astro.props;
+import { Image } from "astro:assets";
+import Whishlist from "../assets/wishlist.png";
+---
+
+<div
+  class="bg-slate-white p-4 rounded-lg shadow-lg shadow-gray-300"
+  x-data=`{title: '${title}', date: '${date}', favori: '${favori}'}`
+  :class="{ 'bg-yellow-200': favori }, { 'relative left-3/4 : test}"
+>
+  <ul class="flex
+  flex-col
+  gap-3">
+    <li>{title}</li>
+    <li>{date}</li>
+    <li class="flex gap-3">
+      <Image src={Whishlist} alt="whishlist" />
+      <button
+        x-transition
+        @click="favori = !favori"
+        x-bind:class="{ 'bg-yellow-100 justify-end': favori }"
+        class="bg-blue-300 flex items-center justify-start p-1 rounded-full w-1/2 self-center border border-gray-300"
+      >
+        <span
+          x-transition
+          class="w-6 h-6 block content-normal bg-blue-500 border border-gray-300 rounded-full"
+        ></span>
+      </button>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Base.astro";
+import Card from "../components/Card.astro";
+
+const events = [
+  {
+    title: "Conférence des astres",
+    date: "Lundi 12 juillet",
+    favori: true,
+  },
+  {
+    title: "Atelier sur les étoiles",
+    date: "Mardi 13 juillet",
+    favori: true,
+  },
+];
+---
+
+<Layout title="Agenda">
+  <h1 class="text-teal-800 text-5xl font-black">Agenda</h1>
+  <div class="flex
+    flex-col
+    gap-6">
+    {
+      events.map((event) => (
+        <Card title={event.title} date={event.date} favori={event.favori} />
+      ))
+    }
+  </div>
+</Layout>
